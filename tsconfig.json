@@ -1,0 +1,31 @@
+{
+    // "extends": "@tsconfig/recommended/tsconfig.json",
+    "compilerOptions": {
+        "strict": false,
+        "strictNullChecks": true,
+        "allowJs": true,
+        "jsx": "react",
+        "outDir": "./public/",
+        "noImplicitAny": true,
+        "module": "es6",
+        "target": "es5",
+        "sourceMap": true,
+        "moduleResolution": "node",
+        "types": ["node"],
+        "lib": [
+            "DOM"
+        ]
+    },
+    // "files": ['src'],
+    "exclude": ["node_modules", 
+                ".gitignore", 
+                "babel.config.json",
+                "jest.config.json",
+                "package.json",
+                "package-lock.json",
+                "tsconfig.json",
+                "webpack.config.js"
+    ],
+    "include": [],
+    "references": []
+}
