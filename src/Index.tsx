@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     },
 ]);
   
-const rootEl = document.getElementById("root");
+const rootEl = document.getElementById("root") as Element;
 
 const root = ReactDOM.createRoot(rootEl).render(
     <React.StrictMode>
