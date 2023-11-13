@@ -4,7 +4,9 @@ module.exports = {
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
-        static: 'path.join(__dirname, "public")',
+        static: {
+            directory: path.join(__dirname, 'public')
+        },
         port: 8080,
         watchFiles: ["src/**/*.tsx"]
     },
