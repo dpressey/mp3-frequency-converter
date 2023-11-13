@@ -8,7 +8,8 @@ module.exports = {
             directory: path.join(__dirname, 'public')
         },
         port: 8080,
-        watchFiles: ["src/**/*.tsx"]
+        historyApiFallback: true,
+        watchFiles: ["src/*.tsx"]
     },
     module: {
         rules: [
@@ -27,7 +28,7 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
     },
-    entry: './src/App.tsx',
+    entry: './src/Index.tsx',
     output: {
         path: path.resolve(__dirname, 'public'),
         filename: 'bundle.js'
