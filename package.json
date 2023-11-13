@@ -1,7 +1,7 @@
 {
-  "name": "mp3-frequency-converter",
+  "name": "mp3-fetcher",
   "version": "1.0.0",
-  "description": "an app that converts mp3 files from 440hz into other frequencies.",
+  "description": "an app that fetches an mp3 song from the web",
   "main": "index.js",
   "scripts": {
     "test": "jest",
@@ -36,6 +36,9 @@
     "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.17",
     "d3": "^7.8.5",
     "express": "^4.18.2",
     "react": "^18.2.0",
