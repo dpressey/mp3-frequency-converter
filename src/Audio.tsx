@@ -1,23 +1,17 @@
-import React, { ChangeEvent } from "react";
+// React
+import React, { ChangeEvent, Fragment } from "react";
 import { useState, useEffect } from "react";
 
-/* UI STEPS */
-    // 1. store frequency data from mp3 on page load in an array/object (DONE)
-    // 2. add a method that listens for a change on the 432hz radio button
-    // 3. create a frequency chart component 
-        // input: {frequencyData}
-        // output: returns the frequency chart using d3.js
+// Material UI
+import CssBaseline from '@mui/material/CssBaseline';
+import Container from '@mui/material/Container';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 
-        // to-do: import d3
-
-/* SETUP*/
-    // import react hook: useState (DONE)
-    // import react hook: useEffect (DONE)
-    // find deezer track ID and update express URL variable (DONE)
-    // make HTTP get from hook to deezer API (DONE)
-    // store audio file in state object (DONE)
-    // render data inside of JSX (DONE)
-
+// Interfaces
 interface AudioFile {
     bpm: number;
     album: {};
@@ -30,16 +24,22 @@ interface AudioFile {
 
 const Audio: React.FC<{}> = () => {
     
-    const [radioButtonForFrecuency, setradioButtonForFrecuency] = useState(false);
+    // TODO: set/get radio button value
+    // const [radioButtonValue, setradioButtonValue] = useState(false);
+
     const [ mp3FileAudioStream, setmp3FileAudioStream] = useState("");
     const [ mp3FileImage, setMp3FileImage ] = useState("");
 
-    const deezerURL = 'https://deezerdevs-deezer.p.rapidapi.com/track/2794654'
+    const deezerURLBase = 'https://deezerdevs-deezer.p.rapidapi.com/track/'
+    const deezerURLRandomTrackId = Math.floor(100000 + Math.random() * 9000000);
+    
+    const deezerURLPrince = 'https://deezerdevs-deezer.p.rapidapi.com/track/2794654'
+    const deezerURLRandom = deezerURLBase + deezerURLRandomTrackId;
 
     let frequencyData = {};
 
     useEffect( () => {
-        fetch(`${deezerURL}`, {
+        fetch(`${deezerURLRandom}`, {
             headers: {
                 'X-RapidAPI-Key': '8e1e61b826msh6cdd1443542d711p18ed23jsndd6836d50ea0',
                 'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
@@ -47,7 +47,6 @@ const Audio: React.FC<{}> = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 setmp3FileAudioStream(data.preview);
                 setMp3FileImage(data.album.cover_big);
                 getFrequencyData(data);
@@ -55,10 +54,10 @@ const Audio: React.FC<{}> = () => {
     }, []);
 
     function onChangeValue(event: ChangeEvent<HTMLInputElement>): void {    
-        // ToDo:    
+        // TODO:    
     }
 
-    // ToDO: import this method from a helper file that exports this function
+    // TODO: import this helper method from a file that exports this function
     function getFrequencyData(mp3File: AudioFile): void {
                 
         // create analyser
@@ -76,45 +75,36 @@ const Audio: React.FC<{}> = () => {
         }
     }
 
-    return(
-       <div id="mp3">
-            <div className="mp3-body">
-                <div className="mp3-image">
-                    <img alt="An image of the album cover for this mp3 file" src={mp3FileImage}></img>
-                </div>
-                <div className="mp3-controls">
-                    <div id="frequency">
-                        <label>
-                            440hz Frequency
-                            <input 
-                                type="radio" 
-                                id="frequency-440" 
-                                name="frequency-440" 
-                                value="440hz Frequency"
-                                // onChange={onChangeValue}
+    return(    
+        <React.Fragment>
+            <CssBaseline />
+            <Container fixed>
+            <div id="mp3">
+                <div className="mp3-body">
+                    <div className="mp3-image">
+                        <img alt="An image of the album cover for this mp3 file" src={mp3FileImage}></img>
+                    </div>
+                    <div className="mp3-controls">
+                        <FormControl>
+                            <FormLabel id="frequency-controlled-radio-buttons-group">Gender</FormLabel>
+                            <RadioGroup
+                                aria-labelledby="demo-controlled-radio-buttons-group"
+                                name="controlled-radio-buttons-group"
+                                // value={radioButtonValue}
+                                onChange={onChangeValue}
                             >
-                            </input>
-                        </label>
-                        
-                        <label>
-                            432hz Frequency
-                            <input 
-                                type="radio" 
-                                id="frequency-432" 
-                                name="frequency-432" 
-                                value="432hz Frequency"
-                                // onChange={onChangeValue}
-                            >
-                            </input>
-                        </label>
+                                <FormControlLabel value="440hz Frequency" control={<Radio />} label="440hz Frequency" />
+                                <FormControlLabel value="432hz Frequency" control={<Radio />} label="432hz Frequency" />
+                            </RadioGroup>
+                        </FormControl>
+                    </div>
+                    <div className="mp3-source">
+                        <audio controls autoPlay src={mp3FileAudioStream}>This Plays From the Deezer API</audio>
                     </div>
                 </div>
-
-                <div className="mp3-source">
-                    <audio controls autoPlay src={mp3FileAudioStream}>This Plays From the Deezer API</audio>
-                </div>
             </div>
-       </div>
+            </Container>
+        </React.Fragment>
     )
 }
 
