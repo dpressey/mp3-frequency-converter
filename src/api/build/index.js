@@ -16,7 +16,7 @@
   \**************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nvar express_1 = __importDefault(__webpack_require__(/*! express */ \"express\"));\nvar app = (0, express_1.default)();\nvar PORT = 3000;\napp.get(\"/\", function (req, res) {\n    res.send({\n        \"message\": \"Hello World!\"\n    });\n});\napp.post(\"/\", function (req, res) {\n    res.send({\n        \"message\": \"Hello World!\"\n    });\n});\napp.listen(PORT);\n\n\n//# sourceURL=webpack://mp3-frequency-converter/./src/api/Index.ts?");
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nvar express_1 = __importDefault(__webpack_require__(/*! express */ \"express\"));\nvar app = (0, express_1.default)();\nvar PORT = 3000;\nvar URL = 'https://deezerdevs-deezer.p.rapidapi.com/track/3135556';\nvar OPTIONS = {\n    headers: {\n        'X-RapidAPI-Key': '8e1e61b826msh6cdd1443542d711p18ed23jsndd6836d50ea0',\n        'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'\n    }\n};\napp.get(\"/\", function (req, res) {\n    req.url = URL;\n    req.headers = OPTIONS.headers;\n    res.send({\n        \"message\": \"HTTP GET completed!\",\n    });\n    // console.log(\"response from API:\"+res);\n});\napp.listen(PORT);\n\n\n//# sourceURL=webpack://mp3-frequency-converter/./src/api/Index.ts?");
 
 /***/ }),
 

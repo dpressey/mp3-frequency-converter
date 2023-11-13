@@ -1,8 +1,9 @@
 import React from "react";
+import Audio from "./Audio";
 
 const App = () => {
     return(
-        <p>Hello World!</p>
+        <Audio />
     );
 }
 
