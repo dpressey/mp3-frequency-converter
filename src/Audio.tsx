@@ -53,8 +53,8 @@ const Audio: React.FC<{}> = () => {
             });
     }, []);
 
-    function onChangeValue(event: ChangeEvent<HTMLInputElement>): void {    
-        // TODO:    
+     // TODO: implement function
+    function onChangeValue(event: ChangeEvent<HTMLInputElement>): void {       
     }
 
     // TODO: import this helper method from a file that exports this function
@@ -79,30 +79,30 @@ const Audio: React.FC<{}> = () => {
         <React.Fragment>
             <CssBaseline />
             <Container fixed>
-            <div id="mp3">
-                <div className="mp3-body">
-                    <div className="mp3-image">
-                        <img alt="An image of the album cover for this mp3 file" src={mp3FileImage}></img>
-                    </div>
-                    <div className="mp3-controls">
-                        <FormControl>
-                            <FormLabel id="frequency-controlled-radio-buttons-group">Gender</FormLabel>
-                            <RadioGroup
-                                aria-labelledby="demo-controlled-radio-buttons-group"
-                                name="controlled-radio-buttons-group"
-                                // value={radioButtonValue}
-                                onChange={onChangeValue}
-                            >
-                                <FormControlLabel value="440hz Frequency" control={<Radio />} label="440hz Frequency" />
-                                <FormControlLabel value="432hz Frequency" control={<Radio />} label="432hz Frequency" />
-                            </RadioGroup>
-                        </FormControl>
-                    </div>
-                    <div className="mp3-source">
-                        <audio controls autoPlay src={mp3FileAudioStream}>This Plays From the Deezer API</audio>
+                <div id="mp3">
+                    <div className="mp3-body">
+                        <div className="mp3-image">
+                            <img alt="An image of the album cover for this mp3 file" src={mp3FileImage}></img>
+                        </div>
+                        <div className="mp3-controls">
+                            <FormControl>
+                                <FormLabel id="frequency-controlled-radio-buttons-group">Frequency Selections</FormLabel>
+                                <RadioGroup
+                                    aria-labelledby="demo-controlled-radio-buttons-group"
+                                    name="controlled-radio-buttons-group"
+                                    // value={radioButtonValue}
+                                    onChange={onChangeValue}
+                                >
+                                    <FormControlLabel value="440hz Frequency" control={<Radio />} label="440hz Frequency" />
+                                    <FormControlLabel value="432hz Frequency" control={<Radio />} label="432hz Frequency" />
+                                </RadioGroup>
+                            </FormControl>
+                        </div>
+                        <div className="mp3-source">
+                            <audio controls autoPlay src={mp3FileAudioStream}>This Plays From the Deezer API</audio>
+                        </div>
                     </div>
                 </div>
-            </div>
             </Container>
         </React.Fragment>
     )
