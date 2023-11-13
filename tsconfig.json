@@ -1,5 +1,4 @@
 {
-    // "extends": "@tsconfig/recommended/tsconfig.json",
     "compilerOptions": {
         "strict": false,
         "strictNullChecks": true,
@@ -11,12 +10,8 @@
         "target": "es5",
         "sourceMap": true,
         "moduleResolution": "node",
-        "types": ["node"],
-        "lib": [
-            "DOM"
-        ]
+        "allowSyntheticDefaultImports": true
     },
-    // "files": ['src'],
     "exclude": ["node_modules", 
                 ".gitignore", 
                 "babel.config.json",
