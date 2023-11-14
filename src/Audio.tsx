@@ -1,5 +1,5 @@
 // React
-import React, { ChangeEvent, Fragment } from "react";
+import React, { Fragment, SyntheticEvent } from "react";
 import { useState, useEffect } from "react";
 
 // Material UI
@@ -54,7 +54,7 @@ const Audio: React.FC<{}> = () => {
     }, []);
 
      // TODO: implement function
-    function onChangeValue(event: ChangeEvent<HTMLInputElement>): void {       
+    function onChangeValue(event: SyntheticEvent): void {
     }
 
     // TODO: import this helper method from a file that exports this function
@@ -90,11 +90,9 @@ const Audio: React.FC<{}> = () => {
                                 <RadioGroup
                                     aria-labelledby="demo-controlled-radio-buttons-group"
                                     name="controlled-radio-buttons-group"
-                                    // value={radioButtonValue}
-                                    onChange={onChangeValue}
                                 >
-                                    <FormControlLabel value="440hz Frequency" control={<Radio />} label="440hz Frequency" />
-                                    <FormControlLabel value="432hz Frequency" control={<Radio />} label="432hz Frequency" />
+                                    <FormControlLabel /* value={radioButtonValue} */ onChange={onChangeValue} control={<Radio />} label="440hz Frequency" />
+                                    <FormControlLabel /* value={radioButtonValue} */ onChange={onChangeValue} control={<Radio />} label="432hz Frequency" />
                                 </RadioGroup>
                             </FormControl>
                         </div>
