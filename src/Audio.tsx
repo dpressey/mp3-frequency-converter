@@ -24,8 +24,8 @@ interface AudioFile {
 
 const Audio: React.FC<{}> = () => {
     
-    // TODO: set/get radio button value
-    // const [radioButtonValue, setradioButtonValue] = useState(false);
+    const [radioButton440Checked, setradioButton440Checked] = useState(false);
+    const [radioButton432Checked, setradioButton432Checked] = useState(false);
 
     const [ mp3FileAudioStream, setmp3FileAudioStream] = useState("");
     const [ mp3FileImage, setMp3FileImage ] = useState("");
@@ -54,7 +54,8 @@ const Audio: React.FC<{}> = () => {
     }, []);
 
      // TODO: implement function
-    function onChangeValue(event: SyntheticEvent): void {
+    function onChangeValue(event: React.SyntheticEvent): void {
+        // update state based on radio button value
     }
 
     // TODO: import this helper method from a file that exports this function
@@ -91,8 +92,8 @@ const Audio: React.FC<{}> = () => {
                                     aria-labelledby="demo-controlled-radio-buttons-group"
                                     name="controlled-radio-buttons-group"
                                 >
-                                    <FormControlLabel /* value={radioButtonValue} */ onChange={onChangeValue} control={<Radio />} label="440hz Frequency" />
-                                    <FormControlLabel /* value={radioButtonValue} */ onChange={onChangeValue} control={<Radio />} label="432hz Frequency" />
+                                    <FormControlLabel value="440" onChange={onChangeValue} checked={radioButton440Checked ? true : false} control={<Radio />} label="440hz Frequency" />
+                                    <FormControlLabel value="432" onChange={onChangeValue} checked={radioButton432Checked ? true : false} control={<Radio />} label="432hz Frequency" />
                                 </RadioGroup>
                             </FormControl>
                         </div>
