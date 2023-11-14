@@ -1,7 +1,7 @@
 import React from "react";
 import Audio from "./Audio";
 
-const App = () => {
+const App: React.FC<{}> = () => {
     return(
         <Audio />
     );
