@@ -23,9 +23,7 @@ interface AudioFile {
 }
 
 const Audio: React.FC<{}> = () => {
-    
-    const [radioButton440Checked, setradioButton440Checked] = useState(false);
-    const [radioButton432Checked, setradioButton432Checked] = useState(false);
+    const [radioValue, setradioValue] = useState("440");
 
     const [ mp3FileAudioStream, setmp3FileAudioStream] = useState("");
     const [ mp3FileImage, setMp3FileImage ] = useState("");
@@ -53,9 +51,9 @@ const Audio: React.FC<{}> = () => {
             });
     }, []);
 
-     // TODO: implement function
-    function onChangeValue(event: React.SyntheticEvent): void {
+    function handleRadioChange(event: React.ChangeEvent<HTMLInputElement>): void {
         // update state based on radio button value
+        setradioValue((event.target as HTMLInputElement).value);
     }
 
     // TODO: import this helper method from a file that exports this function
@@ -91,9 +89,23 @@ const Audio: React.FC<{}> = () => {
                                 <RadioGroup
                                     aria-labelledby="demo-controlled-radio-buttons-group"
                                     name="controlled-radio-buttons-group"
+                                    value={radioValue}
+                                    onChange={handleRadioChange}
                                 >
-                                    <FormControlLabel value="440" onChange={onChangeValue} checked={radioButton440Checked ? true : false} control={<Radio />} label="440hz Frequency" />
-                                    <FormControlLabel value="432" onChange={onChangeValue} checked={radioButton432Checked ? true : false} control={<Radio />} label="432hz Frequency" />
+                                    <FormControlLabel 
+                                        value="440" 
+                                        control={<Radio />} 
+                                        label="440hz Frequency" 
+                                        name="controlled-radio-buttons-frequency-selection" 
+                                        id="440-frequency-selection"
+                                    />
+                                    <FormControlLabel 
+                                        value="432" 
+                                        control={<Radio />} 
+                                        label="432hz Frequency" 
+                                        name="controlled-radio-buttons-frequency-selection" 
+                                        id="432-frequency-selection"
+                                    />
                                 </RadioGroup>
                             </FormControl>
                         </div>
