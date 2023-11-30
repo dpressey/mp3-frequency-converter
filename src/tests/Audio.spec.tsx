@@ -13,7 +13,6 @@ describe("unit tests for the audio component", function(){
 
     // tests
     test('radio button value changed', function(){
-        // const radioValue = "440";
         const newRadioValue = "432";
     
         wrapper
