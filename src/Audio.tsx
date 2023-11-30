@@ -90,6 +90,7 @@ const Audio: React.FC<{}> = () => {
                                     aria-labelledby="demo-controlled-radio-buttons-group"
                                     name="controlled-radio-buttons-group"
                                     value={radioValue}
+                                    className="radio-group"
                                     onChange={handleRadioChange}
                                 >
                                     <FormControlLabel 
