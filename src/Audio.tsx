@@ -22,6 +22,15 @@ interface AudioFile {
     title: string;
 }
 
+interface FrequencyData {
+    bpm: number;
+    fftSize: number;
+    frequencyBinCount: number;
+    maxDecibels: number;
+    minDecibels: number;
+    smoothingTimeConstant: number;
+}
+
 const Audio: React.FC<{}> = () => {
     const [radioValue, setradioValue] = React.useState("440");
 
@@ -57,14 +66,14 @@ const Audio: React.FC<{}> = () => {
     }
 
     // TODO: import this helper method from a file that exports this function
-    function getFrequencyData(mp3File: AudioFile): void {
+    function getFrequencyData(mp3File: AudioFile): FrequencyData {
                 
         // create analyser
         const audioCtx = new AudioContext();
         const analyser = audioCtx.createAnalyser();
 
         // set frequencyData by fetching relevant audio file metadata
-        frequencyData = {
+        let frequencyData: FrequencyData = {
             ['frequencyBinCount']: analyser.frequencyBinCount,
             ['maxDecibels']: analyser.maxDecibels,
             ['minDecibels']: analyser.minDecibels,
@@ -72,6 +81,8 @@ const Audio: React.FC<{}> = () => {
             ['fftSize']: analyser.fftSize,
             ['bpm']: mp3File?.bpm
         }
+
+        return frequencyData;
     }
 
     return(    
